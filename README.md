@@ -1,7 +1,23 @@
 ## noVNC: HTML VNC Client Library and Application
 
 [![Build Status](https://travis-ci.org/novnc/noVNC.svg?branch=master)](https://travis-ci.org/novnc/noVNC)
+### 部署方式      
+* 在需要连接的虚拟机上安装vnc server
 
+    `yum -y install tigervnc-server`       
+* 启动vnc server。这里的n就是sessionnumber，不指定的话默认为1，第一次启动时会提示输入密码，以后也可以使用vncpasswd命令修改密码。VNC的默认端口号是5900，而远程桌面连接端口号则是5900+n
+
+    `vncserver或vncserver :n`     
+* 安装noVNC
+
+    `git clone https://github.com/cloudplus-lab/noVNC.git`      
+    `cd noVNC`
+* 启动launch脚本,`--vnc` 用来指定运行着的VNC server的位置
+
+    `./utils/launch.sh --vnc localhost:5901`     
+* 访问输出信息中的URL，即可远程连接虚拟机
+
+    `http://localhost:6080/vnc.html?host=localhost&port=6080`
 ### Description
 
 noVNC is both a HTML VNC client JavaScript library and an application built on
